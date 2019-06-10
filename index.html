@@ -7,42 +7,120 @@
 <body>
 
 	<div class="grid" ng-app="myApp" ng-controller="myCtrl">
-		<div class="item1 bordered">
+		<header class="item1 bordered">
 			<h1>Quiz: Scale Degrees</h1>
-		</div>
+		</header>
 
 		<div class="item2 bordered">
-			<h3>Quiz Modes</h3>
-			<div id="mode-options">
-				<label>
-					<input type="radio" name="test-mode" value="cats" checked/>
-					Scale Degree &rarr; Note
-				</label>
+			<section>
+				<header>
+					<h3>Quiz Modes</h3>
+				</header>
+				<div id="mode-options">
+					<label>
+						<input type="radio" name="test-mode" value="cats" checked/>
+						Scale Degree &rarr; Note
+					</label>
 
-				<br/>
+					<br/>
 
-				<label>
-					<input type="radio" name="test-mode"/>
-					Note &rarr; Scale Degree
-				</label>
+					<label>
+						<input type="radio" name="test-mode"/>
+						Note &rarr; Scale Degree
+					</label>
 
-				<br/>
+					<br/>
 
-				<label>
-					<input type="radio" name="test-mode"/>
-					Both
-				</label>
-			</div>
+					<label>
+						<input type="radio" name="test-mode"/>
+						Both
+					</label>
+				</div>
+			</section>
+
+			<section>
+				<header>
+					<h3>Keys</h3>
+				</header>
+
+				<div class="flex">
+					<section>
+						<label>
+							<input type="checkbox" value="C" checked ng-click="alterActiveKeys($event)"/>C
+						</label>
+
+						<br/>
+
+						<label>
+							<input type="checkbox" value="D" checked ng-click="alterActiveKeys($event)"/>D
+						</label>
+
+						<br/>
+
+						<label>
+							<input type="checkbox" value="E" checked ng-click="alterActiveKeys($event)"/>E
+						</label>
+
+						<br/>
+
+						<label>
+							<input type="checkbox" value="F" checked ng-click="alterActiveKeys($event)"/>F
+						</label>
+
+						<br/>
+
+						<label>
+							<input type="checkbox" value="G" checked ng-click="alterActiveKeys($event)"/>G
+						</label>
+
+						<br/>
+
+						<label>
+							<input type="checkbox" value="A" checked ng-click="alterActiveKeys($event)"/>A
+						</label>
+
+						<br/>
+
+						<label>
+							<input type="checkbox" value="B" checked ng-click="alterActiveKeys($event)"/>B
+						</label>
+					</section>
+
+					<section>
+						<label>
+							<input type="checkbox" value="Db" checked ng-click="alterActiveKeys($event)"/>Db
+						</label>
+
+						<br/>
+
+						<label>
+							<input type="checkbox" value="Eb" checked ng-click="alterActiveKeys($event)"/>Eb
+						</label>
+
+						<br/>
+
+						<label>
+							<input type="checkbox" value="Gb" checked ng-click="alterActiveKeys($event)"/>Gb
+						</label>
+
+						<br/>
+
+						<label>
+							<input type="checkbox" value="Ab" checked ng-click="alterActiveKeys($event)"/>Ab
+						</label>
+
+						<br/>
+
+						<label>
+							<input type="checkbox" value="Bb" checked ng-click="alterActiveKeys($event)"/>Bb
+						</label>
+					</section>
+				</div>
+
+			</section>
 		</div>
 
 		<div class="item3 bordered">
-			<h3>Keys</h3>
-			<input type="checkbox" name="C" value="C" checked ng-click="alterActiveKeys($event)">C<br>
-			<input type="checkbox" name="F" value="F" ng-click="alterActiveKeys($event)">F<br>
-			<input type="checkbox" name="G" value="G" ng-click="alterActiveKeys($event)">G<br>
-		</div>
-
-		<div class="item4 bordered">
 
 			<section>
 				<h2 class="bordered">Question</h2>
@@ -89,7 +167,7 @@
 			</section>
 		</div>
 
-		<div class="item5 bordered">
+		<div class="item4 bordered">
 			<p>footer</p>
 		</div>
 	</div>

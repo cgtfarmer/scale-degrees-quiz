@@ -1,9 +1,8 @@
 Pretty up CSS (especially the grid stuff)
-Change checkboxes and whatnot to just background colors?
-add rest of keys in
 do the label thing for the checkboxes
-get scale degree checkboxes shifting with user selected key
-get checkboxes consistently starting at correct state
+add rest of keys into html
+add rest of keys into json
+& get checkboxes consistently starting at correct state
 # =============================================================================
 
 

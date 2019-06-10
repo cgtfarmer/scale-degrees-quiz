@@ -17,7 +17,11 @@ main {
 }
 
 section {
-	margin: 1em 0px;
+}
+
+section header {
+	border: 2px solid #000000;
+	/* border-radius: 5px; */
 }
 
 section.input {
@@ -28,6 +32,14 @@ section.input {
 h1, h2, h3 {
 	padding: 10px 10px;
 	text-align: center;
+}
+
+.flex {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+	align-items: flex-start;
+	align-content: flex-start;
 }
 
 .bordered {
@@ -61,10 +73,9 @@ label {
 }
 
 .item1 { grid-area: header; }
-.item2 { grid-area: modes; }
-.item3 { grid-area: keys; }
-.item4 { grid-area: main; }
-.item5 { grid-area: footer; }
+.item2 { grid-area: menu; }
+.item3 { grid-area: main; }
+.item4 { grid-area: footer; }
 
 .grid {
 	display: grid;
@@ -72,8 +83,8 @@ label {
 	grid-template-rows: auto auto auto auto;
 	grid-template-areas:
 		'header header header header header header'
-		'modes modes main main main main'
-		'keys keys main main main main'
+		'menu menu main main main main'
+		'menu menu main main main main'
 		'footer footer footer footer footer footer';
 	/* grid-gap: 10px; */
 	padding: 10px;
