@@ -7,7 +7,6 @@ var app = angular.module('myApp', []);
 var correctAnswer;
 
 var activeKeys = ["C"];
-var activeScaleDegreesMap = {};
 
 initCheckBoxesToCorrectState();
 
@@ -18,33 +17,23 @@ app.controller('myCtrl', function($scope, $http) {
 		.then(function(response) {
 			console.log(response);
 			$scope.data = response.data;
-			initActiveScaleDegreesMap();
-			console.log(activeScaleDegreesMap);
 			displayQuestion($scope);
 		});
 
 	$scope.checkAnswer = function(event) {
 		if(wasTriggeredByClickOrEnter(event)) {
-			// var correctAnswer = $scope.data[selection]["a"].toLowerCase();
-
-			if(answerIsUndefinedOrIncorrect($scope.answer, correctAnswer)) {
-				$("#result-icon").stop();
-				$("#result-icon").html("&cross;");
-				$("#result-icon").css("color", "#FF0000");
-				$("#result-icon").css("opacity", "1");
-				$("#result-icon").animate({opacity: 0}, THREE_SECONDS);
-			} else {
-				$("#result-icon").stop();
-				$("#result-icon").html("&#x2713;");
-				$("#result-icon").css("color", "#00FF00");
-				$("#result-icon").css("opacity", "1");
-				$("#result-icon").animate({opacity: 0}, THREE_SECONDS);
-
-				displayQuestion($scope);
+			if($scope.keySelection.length > 0) {
+				if(answerIsUndefinedOrIncorrect($scope.answer, correctAnswer)) {
+					flashResultsIcon("&cross;", "#FF0000");
+				} else {
+					flashResultsIcon("&#x2713;", "#00FF00");
+					displayQuestion($scope);
+				}
 			}
 
 			$scope.answer = "";
 		}
+		return;
 	}
 
 	$scope.alterActiveKeys = function(event) {
@@ -66,19 +55,7 @@ app.controller('myCtrl', function($scope, $http) {
 
 		displayQuestion($scope);
 		console.log(activeKeys);
-	}
-
-	$scope.alterActiveScaleDegrees = function(event) {
-		console.log(event);
-		var scaleDegree = event.target.value;
-		var checked = event.target.checked;
-		if(checked) {
-			activeScaleDegreesMap[$scope.userSelectedKey][scaleDegree] = 1;
-		} else {
-			activeScaleDegreesMap[$scope.userSelectedKey][scaleDegree] = 0;
-		}
-
-		displayQuestion($scope);
+		return;
 	}
 
 	$scope.toggleHelpTable = function() {
@@ -90,9 +67,20 @@ app.controller('myCtrl', function($scope, $http) {
 			$("#help-table").hide();
 			$("#help-btn").prop("value", "Show Help");
 		}
+
+		return;
 	}
 
 });
+
+function flashResultsIcon(iconStr, colorStr) {
+	$("#result-icon").stop();
+	$("#result-icon").html(iconStr);
+	$("#result-icon").css("color", colorStr);
+	$("#result-icon").css("opacity", "1");
+	$("#result-icon").animate({opacity: 0}, THREE_SECONDS);
+	return;
+}
 
 function answerIsUndefinedOrIncorrect(answer, correctAnswer) {
 	return (answer == undefined) || (answer.toLowerCase() != correctAnswer);
@@ -103,55 +91,23 @@ function wasTriggeredByClickOrEnter(event) {
 }
 
 function displayQuestion($scope) {
-	console.log(activeScaleDegreesMap);
 	// activeKeys = ["C", "F", "G"]; // Remove this
-	activeKeys = ["C"]; // Remove this
+	// activeKeys = ["C"]; // Remove this
 
-	var rn = Math.floor(Math.random() * activeKeys.length);
-	var keySelection = activeKeys[rn];
-	console.log("Key Selection: " + keySelection);
+	var length = activeKeys.length;
+	if(length > 0) {
+		var rn = Math.floor(Math.random() * length);
+		$scope.keySelection = activeKeys[rn];
+		console.log("Key Selection: " + $scope.keySelection);
 
-	activeScaleDegreesMap["C"][4] = 0;
-	activeScaleDegreesMap["C"][5] = 0;
-	activeScaleDegreesMap["C"][2] = 0;
+		rn = Math.floor(Math.random() * 7) + 1;
+		$scope.scaleDegreeSelection = rn;
 
-	var activeScaleDegrees = fetchActiveScaleDegreesOfKey(keySelection);
-	var rn = Math.floor(Math.random() * activeScaleDegrees.length);
-
-	$scope.keySelection = keySelection;
-	$scope.scaleDegreeSelection = activeScaleDegrees[rn];
-	console.log($scope.scaleDegreeSelection);
-	correctAnswer = $scope.data[$scope.keySelection][$scope.scaleDegreeSelection].toLowerCase();
-	return;
-}
-
-function fetchActiveScaleDegreesOfKey(keySelection) {
-	var key = activeScaleDegreesMap[keySelection];
-
-	var activeScaleDegrees = [];
-	for(sd in key) {
-		if(key[sd] == 1) {
-			activeScaleDegrees.push(sd);
-		}
-	}
-
-	console.log(activeScaleDegrees);
-	return activeScaleDegrees;
-}
-
-function initActiveScaleDegreesMap() {
-	var keys = ["C", "D", "E", "F", "G", "A", "B",
-				"Db", "Eb", "Gb", "Ab", "Bb"]
-
-	for(i = 0; i < keys.length; i++) {
-		var key = keys[i];
-		var sdMap = {};
-
-		for(j = 1; j <= 7; j++) {
-			sdMap[j] = 1;
-		}
-
-		 activeScaleDegreesMap[key] = sdMap;
+		console.log($scope.scaleDegreeSelection);
+		correctAnswer = $scope.data[$scope.keySelection][$scope.scaleDegreeSelection].toLowerCase();
+	} else {
+		$scope.keySelection = "";
+		$scope.scaleDegreeSelection = "";
 	}
 
 	return;

@@ -63,9 +63,8 @@ label {
 .item1 { grid-area: header; }
 .item2 { grid-area: modes; }
 .item3 { grid-area: keys; }
-.item4 { grid-area: degrees; }
-.item5 { grid-area: main; }
-.item6 { grid-area: footer; }
+.item4 { grid-area: main; }
+.item5 { grid-area: footer; }
 
 .grid {
 	display: grid;
@@ -74,7 +73,7 @@ label {
 	grid-template-areas:
 		'header header header header header header'
 		'modes modes main main main main'
-		'keys degrees main main main main'
+		'keys keys main main main main'
 		'footer footer footer footer footer footer';
 	/* grid-gap: 10px; */
 	padding: 10px;

@@ -43,6 +43,17 @@
 		</div>
 
 		<div class="item4 bordered">
+			<h3>Scale Degrees: {{userSelectedKey}}</h3>
+			<input type="checkbox" name="1" value="1" checked ng-click="alterActiveScaleDegrees($event)">1<br>
+			<input type="checkbox" name="2" value="2" checked ng-click="alterActiveScaleDegrees($event)">2<br>
+			<input type="checkbox" name="3" value="3" checked ng-click="alterActiveScaleDegrees($event)">3<br>
+			<input type="checkbox" name="4" value="4" checked ng-click="alterActiveScaleDegrees($event)">4<br>
+			<input type="checkbox" name="5" value="5" checked ng-click="alterActiveScaleDegrees($event)">5<br>
+			<input type="checkbox" name="6" value="6" checked ng-click="alterActiveScaleDegrees($event)">6<br>
+			<input type="checkbox" name="7" value="7" checked ng-click="alterActiveScaleDegrees($event)">7<br>
+		</div>
+
+		<div class="item5 bordered">
 
 			<section>
 				<h2 class="bordered">Question</h2>
@@ -89,7 +100,7 @@
 			</section>
 		</div>
 
-		<div class="item5 bordered">
+		<div class="item6 bordered">
 			<p>footer</p>
 		</div>
 	</div>
