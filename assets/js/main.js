@@ -6,11 +6,13 @@ var app = angular.module('myApp', []);
 
 var correctAnswer;
 
-var selectedKey = "C";
 var activeKeys = ["C"];
 var activeScaleDegreesMap = {};
 
+initCheckBoxesToCorrectState();
+
 app.controller('myCtrl', function($scope, $http) {
+	$scope.userSelectedKey = "C";
 
 	$http.get("data.json")
 		.then(function(response) {
@@ -43,6 +45,40 @@ app.controller('myCtrl', function($scope, $http) {
 
 			$scope.answer = "";
 		}
+	}
+
+	$scope.alterActiveKeys = function(event) {
+		console.log(event);
+		var key = event.target.value;
+		$scope.userSelectedKey = key;
+		var checked = event.target.checked;
+		if(checked) {
+			if(!activeKeys.includes(key)) {
+				activeKeys.push(key);
+			}
+		} else {
+			for(i = 0; i < activeKeys.length; i++) {
+				if(activeKeys[i] == key) {
+					activeKeys.splice(i, 1);
+				}
+			}
+		}
+
+		displayQuestion($scope);
+		console.log(activeKeys);
+	}
+
+	$scope.alterActiveScaleDegrees = function(event) {
+		console.log(event);
+		var scaleDegree = event.target.value;
+		var checked = event.target.checked;
+		if(checked) {
+			activeScaleDegreesMap[$scope.userSelectedKey][scaleDegree] = 1;
+		} else {
+			activeScaleDegreesMap[$scope.userSelectedKey][scaleDegree] = 0;
+		}
+
+		displayQuestion($scope);
 	}
 
 	$scope.toggleHelpTable = function() {
@@ -118,6 +154,13 @@ function initActiveScaleDegreesMap() {
 		 activeScaleDegreesMap[key] = sdMap;
 	}
 
+	return;
+}
+
+function initCheckBoxesToCorrectState() {
+	console.log($("div.item3 input").prop("checked", ""));
+	$(".item3 input:first").prop("checked", "true");
+	$(".item4 input").prop("checked", "true");
 	return;
 }
 
