@@ -8,9 +8,10 @@ var correctAnswer;
 
 var activeKeys = ["C"];
 
-initCheckBoxesToCorrectState();
+initInputsToCorrectState();
 
 app.controller('myCtrl', function($scope, $http) {
+	$scope.modeSelection = "Scale Degree";
 	$scope.userSelectedKey = "C";
 
 	$http.get("data.json")
@@ -19,6 +20,20 @@ app.controller('myCtrl', function($scope, $http) {
 			$scope.data = response.data;
 			displayQuestion($scope);
 		});
+
+	$scope.alterActiveMode = function(event) {
+		console.log(event);
+		if(event.target.value.toLowerCase() == "scale-degree") {
+			$scope.modeSelection = "Scale Degree";
+		} else if(event.target.value.toLowerCase() == "note") {
+			$scope.modeSelection = "Note"
+		} else if(event.target.value.toLowerCase() == "both") {
+			$scope.modeSelection = "Both"
+		}
+
+		displayQuestion($scope);
+		return;
+	}
 
 	$scope.checkAnswer = function(event) {
 		if(wasTriggeredByClickOrEnter(event)) {
@@ -91,8 +106,6 @@ function wasTriggeredByClickOrEnter(event) {
 }
 
 function displayQuestion($scope) {
-	// activeKeys = ["C", "F", "G"]; // Remove this
-	// activeKeys = ["C"]; // Remove this
 
 	var length = activeKeys.length;
 	if(length > 0) {
@@ -101,19 +114,25 @@ function displayQuestion($scope) {
 		console.log("Key Selection: " + $scope.keySelection);
 
 		rn = Math.floor(Math.random() * 7) + 1;
-		$scope.scaleDegreeSelection = rn;
+		if($scope.modeSelection.toLowerCase() == "scale degree") {
+			$scope.question = rn;
+			correctAnswer = $scope.data[$scope.keySelection][$scope.question].toLowerCase();
+		} else {
+			$scope.question = $scope.data[$scope.keySelection][rn];
+			correctAnswer = rn.toString().toLowerCase();
+		}
 
-		console.log($scope.scaleDegreeSelection);
-		correctAnswer = $scope.data[$scope.keySelection][$scope.scaleDegreeSelection].toLowerCase();
+		console.log($scope.question);
 	} else {
 		$scope.keySelection = "";
-		$scope.scaleDegreeSelection = "";
+		$scope.question = "";
 	}
 
 	return;
 }
 
-function initCheckBoxesToCorrectState() {
+function initInputsToCorrectState() {
+	$("#mode-options input:first").prop("checked", "true");
 	$("#key-selection input").prop("checked", "");
 	$("#key-selection input:first").prop("checked", "true");
 	return;

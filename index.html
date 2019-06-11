@@ -18,21 +18,21 @@
 				</header>
 				<div id="mode-options">
 					<label>
-						<input type="radio" name="test-mode" value="cats" checked/>
+						<input type="radio" name="quiz-mode" value="scale-degree" checked ng-click="alterActiveMode($event)"/>
 						Scale Degree &rarr; Note
 					</label>
 
 					<br/>
 
 					<label>
-						<input type="radio" name="test-mode"/>
+						<input type="radio" name="quiz-mode" value="note" ng-click="alterActiveMode($event)"/>
 						Note &rarr; Scale Degree
 					</label>
 
 					<br/>
 
 					<label>
-						<input type="radio" name="test-mode"/>
+						<input type="radio" name="quiz-mode" value="both" ng-click="alterActiveMode($event)"/>
 						Both
 					</label>
 				</div>
@@ -123,7 +123,9 @@
 		<div class="item3 bordered">
 
 			<section>
-				<h2 class="bordered">Question</h2>
+				<header>
+					<h2 class="bordered">Question</h2>
+				</header>
 
 				<table id="question-table">
 					<tr>
@@ -132,7 +134,7 @@
 						</td>
 
 						<td>
-							<h3>Scale Degree</h3>
+							<h3>{{modeSelection}}</h3>
 						</td>
 					</tr>
 
@@ -142,7 +144,7 @@
 						</td>
 
 						<td>
-							<h3>{{scaleDegreeSelection}}</h3>
+							<h3>{{question}}</h3>
 						</td>
 					</tr>
 				</table>
@@ -150,7 +152,9 @@
 			</section>
 
 			<section>
-				<h2 id="answer-banner" class="bordered">Answer</h2>
+				<header>
+					<h2 id="answer-banner" class="bordered">Answer</h2>
+				</header>
 
 				<section id="answer-subsection">
 					<input id="answer-input" type="text" ng-model="answer" ng-keypress="checkAnswer($event)"><br>
