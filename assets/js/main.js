@@ -114,9 +114,8 @@ function displayQuestion($scope) {
 }
 
 function initCheckBoxesToCorrectState() {
-	console.log($("div.item3 input").prop("checked", ""));
-	$(".item3 input:first").prop("checked", "true");
-	$(".item4 input").prop("checked", "true");
+	$("#key-selection input").prop("checked", "");
+	$("#key-selection input:first").prop("checked", "true");
 	return;
 }
 

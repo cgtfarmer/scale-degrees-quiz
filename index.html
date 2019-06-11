@@ -12,7 +12,7 @@
 		</header>
 
 		<div class="item2 bordered">
-			<section>
+			<section id="mode-selection">
 				<header>
 					<h3>Quiz Modes</h3>
 				</header>
@@ -38,7 +38,7 @@
 				</div>
 			</section>
 
-			<section>
+			<section id="key-selection">
 				<header>
 					<h3>Keys</h3>
 				</header>
@@ -124,13 +124,35 @@
 
 			<section>
 				<h2 class="bordered">Question</h2>
-				<h3>Key: {{keySelection}}</h3>
-				<h3>Scale degree: {{scaleDegreeSelection}}</h3>
+
+				<table id="question-table">
+					<tr>
+						<td>
+							<h3>Key</h3>
+						</td>
+
+						<td>
+							<h3>Scale Degree</h3>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							<h3>{{keySelection}}</h3>
+						</td>
+
+						<td>
+							<h3>{{scaleDegreeSelection}}</h3>
+						</td>
+					</tr>
+				</table>
+
 			</section>
 
 			<section>
 				<h2 id="answer-banner" class="bordered">Answer</h2>
-				<section class="input">
+
+				<section id="answer-subsection">
 					<input id="answer-input" type="text" ng-model="answer" ng-keypress="checkAnswer($event)"><br>
 					<input id="answer-submit" type="button" value="Submit" ng-click="checkAnswer()"><br>
 				</section>

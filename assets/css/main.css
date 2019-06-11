@@ -6,9 +6,19 @@
 }
 
 body {
+	background-color: #888888;
+}
+
+body * {
 	font-size: 16px;
 	font-family: Arial, Helvetica, sans-serif;
-	background-color: #888888;
+}
+
+@media only screen and (min-width: 700px) {
+
+	body * {
+		font-size: 23px;
+	}
 }
 
 main {
@@ -16,17 +26,9 @@ main {
 	margin-bottom: 2em;
 }
 
-section {
-}
-
 section header {
 	border: 2px solid #000000;
 	/* border-radius: 5px; */
-}
-
-section.input {
-	margin: 0px 20%;
-	text-align: right;
 }
 
 h1, h2, h3 {
@@ -34,42 +36,49 @@ h1, h2, h3 {
 	text-align: center;
 }
 
-.flex {
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: space-around;
-	align-items: flex-start;
-	align-content: flex-start;
+h1 {
+	font-size: 2em;
 }
 
-.bordered {
-	border: 2px solid #000000;
-	/* border-radius: 5px; */
+h2 {
+	font-size: 1.5em;
+}
+
+h3 {
+	font-size: 1.25em;
+}
+
+h4 {
+	font-size: 1.15em;
 }
 
 table {
-	width: 70%;
 	margin: 10px auto;
+}
+
+#help-table {
+	width: 70%;
 	border-collapse: collapse;
 }
 
-table td, table th {
+#help-table td, #help-table th {
 	border: 2px solid #000000;
 	padding: 10px 10px;
 	text-align: center;
 }
 
-input {
-	padding: 5px 5px;
-	font-size: 18px;
+input[type="radio"], input[type="checkbox"] {
+	margin: 10px 10px;
+	margin-left: 15px;
+	text-align: center;
 }
 
 input[type="text"] {
-	padding: 10px 10px;
+	margin: 5px 5px;
+	padding: 5px 5px;
 }
 
 label {
-	margin: 10px 10px;
 }
 
 .item1 { grid-area: header; }
@@ -88,6 +97,19 @@ label {
 		'footer footer footer footer footer footer';
 	/* grid-gap: 10px; */
 	padding: 10px;
+}
+
+.flex {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+	align-items: flex-start;
+	align-content: flex-start;
+}
+
+.bordered {
+	border: 2px solid #000000;
+	/* border-radius: 5px; */
 }
 
 #mode-options {
@@ -110,11 +132,12 @@ label {
 	display: none;
 }
 
-@media only screen and (min-width: 700px){                                      
+#answer-subsection {
+	margin: 0px 20%;
+	text-align: right;
+}
 
-	body {
-		font-size: 24px;
-	}
+@media only screen and (min-width: 700px) {
 
 	main {
 		margin: 0px 20%;
