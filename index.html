@@ -1,170 +1,182 @@
 <!DOCTYPE html>
 <html>
-	<meta charset="UTF-8"/>
-	<meta name="viewport" content="initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0"/>
-	<title>Quiz: Scale Degrees</title>
-	<link rel="stylesheet" href="assets/css/main.css"/>
-<body>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0"/>
+		<title>Quiz: Scale Degrees</title>
+		<link rel="stylesheet" href="assets/css/main.css"/>
+	</head>
+	<body>
 
-	<div class="grid" ng-app="myApp" ng-controller="myCtrl">
-		<header class="item1 bordered">
-			<h1>Quiz: Scale Degrees</h1>
-		</header>
+		<article id="page-grid" ng-app="myApp" ng-controller="myCtrl">
+			<header id="page-header">
+				<h1>Quiz: Scale Degrees</h1>
+			</header>
 
-		<div class="item2 bordered">
-			<section id="mode-selection">
-				<header>
-					<h3>Quiz Modes</h3>
-				</header>
-				<div id="mode-options">
-					<label>
-						<input type="radio" name="quiz-mode" value="scale-degree" checked ng-click="alterActiveMode($event)"/>
-						Scale Degree &rarr; Note
-					</label>
+			<section id="page-menu">
+				<section id="mode-menu">
+					<header>
+						<h3>Quiz Modes</h3>
+					</header>
+					<section id="mode-options" class="flex section-body">
+						<div>
+							<label>
+								<input type="radio" name="quiz-mode" value="scale-degree" checked ng-click="alterActiveMode($event)"/>
+								Scale Degree &rarr; Note
+							</label>
 
-					<br/>
+							<br/>
 
-					<label>
-						<input type="radio" name="quiz-mode" value="note" ng-click="alterActiveMode($event)"/>
-						Note &rarr; Scale Degree
-					</label>
+							<label>
+								<input type="radio" name="quiz-mode" value="note" ng-click="alterActiveMode($event)"/>
+								Note &rarr; Scale Degree
+							</label>
 
-					<br/>
+							<br/>
 
-					<label>
-						<input type="radio" name="quiz-mode" value="both" ng-click="alterActiveMode($event)"/>
-						Both
-					</label>
-				</div>
-			</section>
-
-			<section id="key-selection">
-				<header>
-					<h3>Keys</h3>
-				</header>
-
-				<div class="flex">
-					<section>
-						<label>
-							<input type="checkbox" value="C" checked ng-click="alterActiveKeys($event)"/>C
-						</label>
-
-						<br/>
-
-						<label>
-							<input type="checkbox" value="D" checked ng-click="alterActiveKeys($event)"/>D
-						</label>
-
-						<br/>
-
-						<label>
-							<input type="checkbox" value="E" checked ng-click="alterActiveKeys($event)"/>E
-						</label>
-
-						<br/>
-
-						<label>
-							<input type="checkbox" value="F" checked ng-click="alterActiveKeys($event)"/>F
-						</label>
-
-						<br/>
-
-						<label>
-							<input type="checkbox" value="G" checked ng-click="alterActiveKeys($event)"/>G
-						</label>
-
-						<br/>
-
-						<label>
-							<input type="checkbox" value="A" checked ng-click="alterActiveKeys($event)"/>A
-						</label>
-
-						<br/>
-
-						<label>
-							<input type="checkbox" value="B" checked ng-click="alterActiveKeys($event)"/>B
-						</label>
+							<label>
+								<input type="radio" name="quiz-mode" value="both" ng-click="alterActiveMode($event)"/>
+								Both
+							</label>
+						</div>
 					</section>
+				</section>
 
-					<section>
-						<label>
-							<input type="checkbox" value="Db" checked ng-click="alterActiveKeys($event)"/>Db
-						</label>
+				<section id="key-menu">
+					<header>
+						<h3>Keys</h3>
+					</header>
 
-						<br/>
+					<div id="key-options" class="flex section-body">
+						<section>
+							<label>
+								<input type="checkbox" value="C" checked ng-click="alterActiveKeys($event)"/>C
+							</label>
 
-						<label>
-							<input type="checkbox" value="Eb" checked ng-click="alterActiveKeys($event)"/>Eb
-						</label>
+							<br/>
 
-						<br/>
+							<label>
+								<input type="checkbox" value="D" checked ng-click="alterActiveKeys($event)"/>D
+							</label>
 
-						<label>
-							<input type="checkbox" value="Gb" checked ng-click="alterActiveKeys($event)"/>Gb
-						</label>
+							<br/>
 
-						<br/>
+							<label>
+								<input type="checkbox" value="E" checked ng-click="alterActiveKeys($event)"/>E
+							</label>
 
-						<label>
-							<input type="checkbox" value="Ab" checked ng-click="alterActiveKeys($event)"/>Ab
-						</label>
+							<br/>
 
-						<br/>
+							<label>
+								<input type="checkbox" value="F" checked ng-click="alterActiveKeys($event)"/>F
+							</label>
 
-						<label>
-							<input type="checkbox" value="Bb" checked ng-click="alterActiveKeys($event)"/>Bb
-						</label>
-					</section>
-				</div>
+							<br/>
 
-			</section>
-		</div>
+							<label>
+								<input type="checkbox" value="G" checked ng-click="alterActiveKeys($event)"/>G
+							</label>
 
-		<div class="item3 bordered">
+							<br/>
 
-			<section>
-				<header>
-					<h2 class="bordered">Question</h2>
-				</header>
+							<label>
+								<input type="checkbox" value="A" checked ng-click="alterActiveKeys($event)"/>A
+							</label>
 
-				<table id="question-table">
-					<tr>
-						<td>
-							<h3>Key</h3>
-						</td>
+							<br/>
 
-						<td>
-							<h3>{{modeSelection}}</h3>
-						</td>
-					</tr>
+							<label>
+								<input type="checkbox" value="B" checked ng-click="alterActiveKeys($event)"/>B
+							</label>
+						</section>
 
-					<tr>
-						<td>
-							<h3>{{keySelection}}</h3>
-						</td>
+						<section>
+							<label>
+								<input type="checkbox" value="Db" checked ng-click="alterActiveKeys($event)"/>Db
+							</label>
 
-						<td>
-							<h3>{{question}}</h3>
-						</td>
-					</tr>
-				</table>
+							<br/>
 
-			</section>
+							<label>
+								<input type="checkbox" value="Eb" checked ng-click="alterActiveKeys($event)"/>Eb
+							</label>
 
-			<section>
-				<header>
-					<h2 id="answer-banner" class="bordered">Answer</h2>
-				</header>
+							<br/>
 
-				<section id="answer-subsection">
-					<input id="answer-input" type="text" ng-model="answer" ng-keypress="checkAnswer($event)"><br>
-					<input id="answer-submit" type="button" value="Submit" ng-click="checkAnswer()"><br>
+							<label>
+								<input type="checkbox" value="Gb" checked ng-click="alterActiveKeys($event)"/>Gb
+							</label>
+
+							<br/>
+
+							<label>
+								<input type="checkbox" value="Ab" checked ng-click="alterActiveKeys($event)"/>Ab
+							</label>
+
+							<br/>
+
+							<label>
+								<input type="checkbox" value="Bb" checked ng-click="alterActiveKeys($event)"/>Bb
+							</label>
+						</section>
+					</div>
+
 				</section>
 			</section>
 
-			<h1 id="result-icon">&#x2713;</h1>
+			<section id="page-main">
 
-			<section id="help-table-container">
+				<section>
+					<header>
+						<h2>Question</h2>
+					</header>
+
+					<section class="section-body">
+
+						<table id="question-table">
+							<tr>
+								<th>
+									<h3>Key</h3>
+								</th>
+
+								<th>
+									<h3>{{modeSelection}}</h3>
+								</th>
+							</tr>
+
+							<tr>
+								<td>
+									<h3>{{keySelection}}</h3>
+								</td>
+
+								<td>
+									<h3>{{question}}</h3>
+								</td>
+							</tr>
+						</table>
+
+					</section>
+				</section>
+
+				<section>
+					<header>
+						<h2>Answer</h2>
+					</header>
+
+					<section class="section-body">
+						<section id="answer-body">
+							<input id="answer-input" type="text" ng-model="answer" ng-keypress="checkAnswer($event)"><br>
+							<input id="answer-submit" type="button" value="Submit" ng-click="checkAnswer()"><br>
+
+							<h1 id="result-icon">&#x2713;</h1>
+						</section>
+					</section>
+
+				</section>
+
+			</section>
+
+			<section id="page-help">
 				<input id="help-btn" type="button" value="Show Help" ng-model="helpBtn" ng-click="toggleHelpTable()"><br>
 
 				<table id="help-table">
@@ -191,16 +203,15 @@
 					</tr>
 				</table>
 			</section>
-		</div>
 
-		<div class="item4 bordered">
-			<p>footer</p>
-		</div>
-	</div>
+			<footer id="page-footer">
+				<p>&copy; 2019 Christian Farmer, All Rights Reserved</p>
+			</footer>
+		</article>
 
-	<script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript" src="assets/js/angular-1.7.8.min.js"></script>
-	<script type="text/javascript" src="assets/js/main.js"></script>
+		<script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="assets/js/angular-1.7.8.min.js"></script>
+		<script type="text/javascript" src="assets/js/main.js"></script>
 
-</body>
+	</body>
 </html>

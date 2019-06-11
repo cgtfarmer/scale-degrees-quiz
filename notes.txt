@@ -1,3 +1,4 @@
+get font scaling stuff nightmares figured out
 Pretty up CSS (especially the grid stuff)
 do the label thing for the checkboxes
 add rest of keys into html
