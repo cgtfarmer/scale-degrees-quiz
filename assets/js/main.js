@@ -6,6 +6,8 @@ var app = angular.module('myApp', []);
 
 var correctAnswer;
 
+var selectedMode = "Scale Degree";
+var modes = ["Scale Degree", "Note"];
 var activeKeys = ["C"];
 
 initInputsToCorrectState();
@@ -24,11 +26,11 @@ app.controller('myCtrl', function($scope, $http) {
 	$scope.alterActiveMode = function(event) {
 		console.log(event);
 		if(event.target.value.toLowerCase() == "scale-degree") {
-			$scope.modeSelection = "Scale Degree";
+			selectedMode = "Scale Degree";
 		} else if(event.target.value.toLowerCase() == "note") {
-			$scope.modeSelection = "Note"
+			selectedMode = "Note"
 		} else if(event.target.value.toLowerCase() == "both") {
-			$scope.modeSelection = "Both"
+			selectedMode = "Both"
 		}
 
 		displayQuestion($scope);
@@ -106,6 +108,16 @@ function wasTriggeredByClickOrEnter(event) {
 }
 
 function displayQuestion($scope) {
+	console.log("Global Mode: " + selectedMode);
+
+	var currentMode;
+	if(selectedMode.toLowerCase() == "both") {
+		currentMode = modes[Math.floor(Math.random() * modes.length)];
+	} else {
+		currentMode = selectedMode;
+	}
+
+	$scope.modeSelection = currentMode;
 
 	var length = activeKeys.length;
 	if(length > 0) {
@@ -114,10 +126,10 @@ function displayQuestion($scope) {
 		console.log("Key Selection: " + $scope.keySelection);
 
 		rn = Math.floor(Math.random() * 7) + 1;
-		if($scope.modeSelection.toLowerCase() == "scale degree") {
+		if(currentMode.toLowerCase() == "scale degree") {
 			$scope.question = rn;
 			correctAnswer = $scope.data[$scope.keySelection][$scope.question].toLowerCase();
-		} else {
+		} else if(currentMode.toLowerCase() == "note") {
 			$scope.question = $scope.data[$scope.keySelection][rn];
 			correctAnswer = rn.toString().toLowerCase();
 		}
