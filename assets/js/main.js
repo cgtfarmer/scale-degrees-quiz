@@ -145,8 +145,8 @@ function displayQuestion($scope) {
 
 function initInputsToCorrectState() {
 	$("#mode-options input:first").prop("checked", "true");
-	$("#key-selection input").prop("checked", "");
-	$("#key-selection input:first").prop("checked", "true");
+	$("#key-options input").prop("checked", "");
+	$("#key-options input:first").prop("checked", "true");
 	return;
 }
 
