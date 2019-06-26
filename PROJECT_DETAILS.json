@@ -4,7 +4,7 @@
 	"revenue" : "No", 
 	"status" : "Complete", 
 	"summary" : "The purpose of this web application is to provide an efficient method of practicing/memorizing the scale degrees of the 12 keys",
-	"description" : "A Bash script converts the CSV question-answer data to a JSON file. Using AngularJS' http service, the JSON file is asynchronously loaded and it populates the help table at the bottom and is fed through a question randomizer that follows the user's menu choices. Using CSS grid and media queries for responsiveness", 
+	"description" : "Using AngularJS' http service, the JSON file is asynchronously loaded and it populates the help table at the bottom and is fed through a question randomizer that follows the user's menu choices. Using CSS grid and media queries for responsiveness", 
 	"future-work" : [
 						""
 				    ],
@@ -19,7 +19,7 @@
 	"lines-of-code" : "0", 
 	"user-interface" : "Web", 
 	"keywords" : ["Education", "Web Application", "UI/UX", "Games"], 
-	"languages" : ["HTML", "CSS", "JavaScript", "JSON", "Bash"],
+	"languages" : ["HTML", "CSS", "JavaScript", "JSON"],
 	"libraries" : [
 					"JavaScript: jQuery, AngularJS"
 				  ],
